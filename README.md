@@ -1,19 +1,73 @@
-# Capstone Project Two
+# Violet - A Better Listening Experience
 
-We have broken down the Capstone Project into easy-to-follow steps. Each step of the capstone contains a link with instructions for that step. You may notice this secondCapstone follows a similar pattern to your first Capstone, however, there are key differences. 
+## Summary - Project Description
+Violet is a playlist building application. It allows users to import music from youtube. Playlists are not limited to music, user can upload anything from youtube and listen to it as an audio, including talk shows or lectures. It allows users to sign-up and login, modify user settings, create and edit playlists, add custom songs, or get songs from a search bar. The bread and butter of this app is the algorithm that makes suggestions for users on what they might like based on genre / artist / and songs already added.
 
-## Overview
-For your second Capstone Project, you’ll build a more complex database-driven website. Most students will choose to develop this app in React and Node, however, Flask/Python is also an option if you tackle a difficult idea. This website will be powered either off of an external API or an API that you build yourself. Your finished capstone will be an integral part of your portfolio; it will demonstrate to potential employers everything you’ve learned from this course.We want you to work on a challenging project that will incorporate all of the full-stack skills you’ve been developing. The goal of this project isn’t to create something that’s never been done before but should be more ambitious than your last capstone. You could potentially create a website similar to one that already exists, but this time, perhaps add a feature that you wish the website had.We do encourage you to be creative when building your site. You’re free to choose any API you’d like to use or build your own. We encourage you to tap into your imagination throughout the project.
 
-## Examples
-You already know about the wealth of APIs available online. Perhaps on this capstone, you can work on one of your ideas that was a bit too complicated for the last project.We also encourage you to create your own API if you cannot find one with the data you are looking for. You can do this through web scraping, importing a CSV, or loading your own data into the API.
+## Tech Stack
+### Frontend
+React, Bootstrap, Fontawesome, CSS, Custom API Middleware, Logo design. Testing using react-testing-libary
 
-Let’s give you an example of what a site could look like. Say you want to make a website or mobile app that was like Facebook for dogs - something that would allow pet owners to connect with other pets in their neighborhood. First, you could load information into the application about various breeds of dogs, which would populate drop down lists and allow users to sort for the kind of dog they would like to sit. This will help users build the profile for their animal. You could add forms with various information about the pets.You could allow them to upload pictures (dog owners love nothing more than to take pictures of their animals). Most importantly, you could allow the pets to connect with other pets through a graph.Now let’s talk about bells and whistles. What if a user of your Dogbook was leaving town and wanted to find users in their neighborhood to watch their dog for the weekend. You could implement a geographical filtering and simple messaging or request system in order to help Spot find the best pet sitter. And since no one wants their dog watched by some kind of monster, you could implement reviews to see if people recommend this sitter. There are a million different features you could add!Verified users, so celebrities could show off their dogs. Hafthor Bjornsson, the actor who plays the Mountain on Game ofThrones, has an adorable pomeranian and people demand picture proof! You could implement an adoption system so people can give shelter pets a good home. Of course, adding in all of these features would be beyond the scope of this project, but you should expect this app to have more functionality than the last Capstone
+### Backend
+Node.js, Express, Jsonwebtoken authentication,  Custom API https://github.com/Centristy/violet-backend, Credits: Deezer API - https://developers.deezer.com/, https://rapidapi.com/420vijay47/api/youtube-mp3-downloader2/, JSON schema verification, SQL Database, (Hosted at ElphantSQL). Bcyrpt -Hashed password security, axios, pg and psql.
 
-## Guidelines
+## Features
 
-1. You can use any technology we’ve taught you in the course, and there’s nothing stopping you from using outside libraries are services.That being said, we recommend you use React, and Node.js for this Capstone.If you completed the optional Redux unit, we recommend you use Redux as well. You can useFlask/Python but will be expected to make a much more fully featured application than last time.
-2. Every step of the project has submissions. This will alert your mentor to evaluate your work. Pay attention to the instructions so you submit the right thing. You will submit the link to your GitHub repo several times, this is for your mentor’s convenience. Your URL on GitHub is static and will not change.
-3. The first two steps require mentor approval to proceed, but after that, you are free to continue working on the project after you submit your work. For instance, you don’t need your mentor to approve your database schema before you start working on your site. Likewise, you don’t need your mentor to approve the first iteration of your site before you start polishing it.
-4. If you get stuck, there is a wealth of resources at your disposal. The course contains all of the material you will need to complete this project, but a well-phrased Google search might yield you an immediate solution to your problem. Don’t forget that your Slack community, TAs, and your mentor there to help you out.
-5.Make sure you use a free API or create your own API and deploy your project on Heroku, so everyone can see your work!
+### Secure User Sign-in / Sign-up
+User routes are protected using jsonwebtokens, and bcrypt hashed passwords. 
+
+### Search Bar
+The search bar is the quickest way to add music which works with mixed queries, or any combination of title, artist or album. Search bar auto loads all data from Deezer API (Note: songs are in demo mode and are only 30 seconds long. In a production website, they'd be the full songs) The search bar loads the song into a list, and each song has add song + icon next to it, making it easy to add.
+
+### Password Toggle
+Allows people to toggle the password bar to see what they're typing in, or if they prefer to keep their password hidden from people watching their screens. 
+
+### Dynamic navigation bar and homepage
+Navigation bar updates based on whether user is logged in or not. Their is an explore page which uses the song suggestion algorithm in it
+
+### Play list customization
+Users can create empty play lists with a title and description which will allow them to categorize them. Users can also edit the description and title, keeping the audio tracks intact
+
+### Song information Toggle icon
+There is a information icon next to each song so that the user can know the artist and album of the song.
+
+### Custom Song add Form
+If you can't find the song using the search bar, or would prefer a more customized play list. You can add songs in a more detailed way. This would be good for artists that are making their own music and would like to keep a list of work in progresses. 
+
+
+##Developer Offline Deployment
+
+### Backend
+1) The database file can be seeded from violet.sql (Use PSQL < violet.sql on the command line)
+
+2) Backend runs on localhost:10000, but can be set to users preferences.
+
+3) There are additional API features that are not used in the front end. For example: you make GET requests for singular song information.
+
+4) To run you can uses npm start - or npm run dev (for development mode using nodemon)
+
+
+### Frontend
+1) To deploy front end, npm start on the command line. Also note the api middleware will need to be modified for offline developers
+
+2) All tests are run using npm test on the command line.
+
+
+
+
+## Future development
+1) Allow users to change password / have a forgotten password system in place.
+
+2) Put user authentication before allowing queries.
+
+3) Allow users to delete their own accounts.
+
+4) Optional - Interface is currently in darkmode only, build a light mode toggle for our more optimistic early-bird users.
+
+5) Write tests for violet-backend.
+
+
+
+### Dedication
+
+I'd like to thank my supportive husband Chris Lee for being so patient with me for these past few months. I know I couldn't have done it without his support!

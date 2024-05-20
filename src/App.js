@@ -7,13 +7,14 @@ import LoadingSpinner from "./common/LoadingSpinner";
 import UserContext from "./auth/UserContext";
 import * as jwt from "jsonwebtoken";
 import VioletApi from "./api/api";
+import BottomNav from "./routes-nav/BottomNav";
 
 
 
 
 
 // Key name for storing token in localStorage for "remember me" re-login
-export const TOKEN_STORAGE_ID = "jobly-token";
+export const TOKEN_STORAGE_ID = "violet-token";
 
 /** Violet Playlist Maker
  *
@@ -126,6 +127,7 @@ function App() {
           <div className="App">
             <Navigation logout={logout} />
             <Routes login={login} signup={signup} />
+            <BottomNav/>
             
           </div>
         </UserContext.Provider>

@@ -1,24 +1,24 @@
 import React from "react";
 import SongCard from "./SongCard";
 
-/** Show list of job cards.
+/** Show list of Song cards.
  *
- * Used by both JobList and CompanyDetail to list jobs. Receives an apply
- * func prop which will be called by JobCard on apply.
+ * Used by both SongList and PlayDetail to list songs. Receives an apply
+ * func prop which will be called by SongCard on apply.
  *
- * JobList -> JobCardList -> JobCard
- * CompanyDetail -> JobCardList -> JobCard
+ * SongList -> SongCardList -> SongCard
+ * PlayDetail -> SongCardList -> SongCard
  *
  */
 
-function SongCardList({ songs, added, playlist_id }) {
+function SongCardList({ songs, added, playlist_id, limit = songs.length }) {
 
-
+  let segment = songs.slice(0,limit)
 
 
   return (
       <div className="SongCardList">
-        {songs.map(song => (
+        {segment.map(song => (
             <SongCard
                 key={song.id}
                 id={song.id}

@@ -11,7 +11,7 @@ import "./PlaylistForm.css"
 /** Playlist adding form.  */
 
 function PlaylistForm() {
-    const { currentUser, setCurrentUser } = useContext(UserContext);
+    const { currentUser } = useContext(UserContext);
     const [formData, setFormData] = useState({
     title: "",
     user_username: currentUser.username,

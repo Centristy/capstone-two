@@ -1,7 +1,7 @@
 import React from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route} from "react-router-dom";
 import Homepage from "../homepage/Homepage";
-import PlayLists from "../playlists/PlayLists";
+
 
 import PlayDetail from "../playlists/PlayDetail";
 import LoginForm from "../auth/LoginForm";
@@ -12,6 +12,7 @@ import PlaylistForm from "../playlists/PlaylistForm";
 import DeletePlaylist from "../playlists/DeletePlaylist";
 import SongForm from "../songs/SongForm";
 import PlaylistFormEdit from "../playlists/PlaylistFormEdit";
+import Explore from "../explore/Explore";
 
 /** Site-wide routes.
  *
@@ -44,6 +45,10 @@ function Routes({ login, signup }) {
             <SignupForm signup={signup} />
           </Route>
 
+          <Route exact path="/explore">
+            <Explore/>
+          </Route>
+
           <PrivateRoute exact path="/playlists/new">
             <PlaylistForm />
           </PrivateRoute>
@@ -54,27 +59,22 @@ function Routes({ login, signup }) {
 
           <PrivateRoute exact path="/playlist/:id/delete">
             <DeletePlaylist/>
-
           </PrivateRoute>
 
           <PrivateRoute exact path="/playlist/:id/addsong">
             <SongForm/>
-
           </PrivateRoute>
-
 
           <PrivateRoute path="/profile">
             <ProfileForm />
           </PrivateRoute>
 
           <PrivateRoute exact path="/playlist/:id/edit">
-
           <PlaylistFormEdit/>
-
           </PrivateRoute>
 
           <Route path="/*">
-            <h1>404: Page not found please go</h1> 
+            <h1 className="text-warning">404: Page not found please go back</h1> 
           </Route>
         </Switch>
       </div>

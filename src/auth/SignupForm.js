@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import Alert from "../common/Alert";
 import "./SignupForm.css"
+import {Icon} from 'react-icons-kit';
+import {eyeOff} from 'react-icons-kit/feather/eyeOff';
+import {eye} from 'react-icons-kit/feather/eye'
 
 /** Signup form.
  *
@@ -23,6 +26,8 @@ function SignupForm({ signup }) {
     email: "",
   });
   const [formErrors, setFormErrors] = useState([]);
+  const [type, setType] = useState('password');
+  const [icon, setIcon] = useState(eyeOff);
 
   console.debug(
       "SignupForm",
@@ -45,6 +50,18 @@ function SignupForm({ signup }) {
       setFormErrors(result.errors);
     }
   }
+
+ /** Toggle password visibility */
+  
+  const handleToggle = () => {
+    if (type==='password'){
+      setIcon(eye);
+      setType('text')
+    } else {
+      setIcon(eyeOff)
+      setType('password')
+  }
+}
 
   /** Update form data field */
   function handleChange(evt) {
@@ -69,16 +86,6 @@ function SignupForm({ signup }) {
                       onChange={handleChange}
                   />
                 </div>
-                <div className="form-group">
-                  <label>Password</label>
-                  <input
-                      type="password"
-                      name="password"
-                      className="form-control"
-                      value={formData.password}
-                      onChange={handleChange}
-                  />
-                </div>
 
                 <div className="form-group">
                   <label>Name</label>
@@ -100,6 +107,20 @@ function SignupForm({ signup }) {
                       onChange={handleChange}
                   />
                 </div>
+
+                <div className="form-group">
+                  <label>Password</label>
+                  <input
+                      type={type}
+                      name="password"
+                      className="form-control"
+                      value={formData.password}
+                      onChange={handleChange}
+                  />
+                </div>
+
+                <span class="flex justify-around items-center" onClick={handleToggle}>
+                <Icon class="absolute mr-10" icon={icon} size={25} alt="show password"/></span>
 
                 {formErrors.length
                     ? <Alert type="danger" messages={formErrors} />

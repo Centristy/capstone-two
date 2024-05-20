@@ -1,7 +1,7 @@
 # Violet - A Better Listening Experience
 
 ## Summary - Project Description
-Violet is a playlist building application. It allows users to import music from youtube. Playlists are not limited to music, user can upload anything from youtube and listen to it as an audio, including talk shows or lectures. It allows users to sign-up and login, modify user settings, create and edit playlists, add custom songs, or get songs from a search bar. The bread and butter of this app is the algorithm that makes suggestions for users on what they might like based on genre / artist / and songs already added.
+Violet is a playlist building application. It allows users to import music from youtube. Playlists are not limited to music, user can upload anything from youtube and listen to it as an audio, including talk shows or lectures. It allows users to sign-up and login, modify user settings, create and edit playlists, add custom songs, or get songs from a search bar. The bread and butter of this app is the algorithm that makes suggestions for users on what they might like based on artist / and songs already added.
 
 
 ## Tech Stack
@@ -66,6 +66,7 @@ If you can't find the song using the search bar, or would prefer a more customiz
 
 5) Write tests for violet-backend.
 
+6) Add genre based suggestions in the explorer page
 
 
 ### Dedication

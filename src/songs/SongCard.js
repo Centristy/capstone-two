@@ -1,8 +1,9 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./SongCard.css";
 import { faCircleInfo, faSquareMinus, faSquarePlus} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import VioletApi from "../api/api";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 
 /** Show information about playlist - songs and has playablilty.
@@ -12,17 +13,11 @@ import VioletApi from "../api/api";
 function SongCard({ id, title, artist, album, url, added, playlist_id }) {
 
  
-
+ let history = useHistory()
   const [playing, setPlaying] = useState(false)
 
   // Time format for duration 134 --> 1:34
 
-  function timeformat(text){
-
-    let timetext = text.split('')[0] + ":" + text.split('')[1] + text.split('')[2]
-
-    return timetext
-  }
 
   function toggle(){
 
@@ -46,6 +41,7 @@ function SongCard({ id, title, artist, album, url, added, playlist_id }) {
     try{
     let res = await VioletApi.addSong(data)
     window.location.reload();
+    history.push(`/playlists/${playlist_id}`)
     } catch(e){
 
       console.log(e)

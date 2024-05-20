@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:10000";
+const BASE_URL = process.env.REACT_APP_BASE_URL || "https://violet-backend.onrender.com";
 
 /** API Class.
  *
@@ -11,7 +11,7 @@ const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:10000";
  */
 
 class VioletApi {
- 
+
   static token;
 
   static async request(endpoint, data = {}, method = "get") {
@@ -72,7 +72,7 @@ static async saveProfile(username, data) {
 
   static async getPlaylists(name) {
     let res = await this.request("playlists", { name });
-    return res.companies;
+    return res;
   }
 
   /** Create a playlist (filtered by name if not undefined) */
@@ -137,12 +137,21 @@ static async saveProfile(username, data) {
       return res;
     }
     
-    /** Conver a youtube link to an mp3 song */
+    /** Convert a youtube link to an mp3 song */
 
     
     static async convertUrl(data) {
       console.log (data, "This is the data going to the request")
       let res = await this.request("convert/", data );
+      return res ;
+    }
+
+
+    // EXPLORE ROUTE //
+
+    static async getSimilarArtist() {
+
+      let res = await this.request("explore/" );
       return res ;
     }
 

@@ -3,20 +3,21 @@ import "./SearchForm.css";
 
 /** Search widget.
  *
- * Appears on PlaylistDetails so that these can be filtered
+ * Appears on Explorer Page so that these can be filtered
  * down.
  *
  * This component doesn't *do* the searching, but it renders the search
  * form and calls the `searchFor` function prop that runs in a parent to do the
  * searching.
  *
- * { Songs } -> SearchForm
+ * { Songlist Generate } -> SearchForm
  */
 
-function SearchForm({ searchFor }) {
+function GenerateButton({ searchFor, query }) {
+
   console.debug("SearchForm", "searchFor=", typeof searchFor);
 
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState(query);
 
   /** Tell parent to filter */
   function handleSubmit(evt) {
@@ -26,27 +27,17 @@ function SearchForm({ searchFor }) {
     setSearchTerm(searchTerm.trim());
   }
 
-  /** Update form fields */
-  function handleChange(evt) {
-    setSearchTerm(evt.target.value);
-  }
 
   return (
-      <div className="SearchForm mb-4">
+      
         <form className="form-inline" onSubmit={handleSubmit}>
-          <input
-              className="form-control form-control-lg flex-grow-1"
-              name="searchTerm"
-              placeholder="Enter search term.."
-              value={searchTerm}
-              onChange={handleChange}
-          />
-          <button type="submit" className="btn btn-lg btn-primary">
-            Submit
+          
+          <button type="submit" className="btn btn-lg btn-primary generate">
+            Generate
           </button>
         </form>
-      </div>
+
   );
 }
 
-export default SearchForm;
+export default GenerateButton;

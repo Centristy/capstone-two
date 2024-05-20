@@ -5,8 +5,7 @@ import UserContext from "../auth/UserContext";
 import logo from "../static/logo.png"
 import homepageLogo from "../static/Logo-Homepage.png"
 import PlayLists from "../playlists/PlayLists"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUserEdit, faMusic } from '@fortawesome/free-solid-svg-icons'
+
 
 
 /** Homepage of site.

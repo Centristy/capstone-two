@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import Alert from "../common/Alert";
-import JoblyApi from "../api/api";
+import VioletApi from "../api/api";
 import UserContext from "../auth/UserContext";
 
 // eslint-disable-next-line
@@ -64,7 +64,7 @@ function ProfileForm() {
     let updatedUser;
 
     try {
-      updatedUser = await JoblyApi.saveProfile(username, profileData);
+      updatedUser = await VioletApi.saveProfile(username, profileData);
     } catch (errors) {
       debugger;
       setFormErrors(errors);

@@ -1,8 +1,7 @@
 import React, { useState, useContext } from "react";
 import Alert from "../common/Alert";
-import JoblyApi from "../api/api";
-import UserContext from "../auth/UserContext";
 import VioletApi from "../api/api";
+import UserContext from "../auth/UserContext";
 import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom";
 
 
@@ -82,7 +81,7 @@ function PlaylistFormEdit() {
     };
 
     try {
-        await JoblyApi.savePlaylist(id, playlistData);
+        await VioletApi.savePlaylist(id, playlistData);
     } catch (errors) {
         debugger;
         setFormErrors(errors);

@@ -6,10 +6,10 @@ Violet is a playlist building application. It allows users to import music from 
 
 ## Tech Stack
 ### Frontend
-React, Bootstrap, Fontawesome, CSS, Custom API Middleware, Logo design. Testing using react-testing-libary
+React, Bootstrap, Fontawesome, CSS, Custom API Middleware, Logo design. Testing using react-testing-libary Deployed Here https://capstone-project-two.onrender.com
 
 ### Backend
-Node.js, Express, Jsonwebtoken authentication,  Custom API https://github.com/Centristy/violet-backend, Credits: Deezer API - https://developers.deezer.com/, https://rapidapi.com/420vijay47/api/youtube-mp3-downloader2/, JSON schema verification, SQL Database, (Hosted at ElphantSQL). Bcyrpt -Hashed password security, axios, pg and psql.
+Node.js, Express, Jsonwebtoken authentication,  Custom API https://github.com/Centristy/violet-backend, Credits: Deezer API - https://developers.deezer.com/, https://rapidapi.com/420vijay47/api/youtube-mp3-downloader2/, JSON schema verification, SQL Database, (Hosted at ElphantSQL). Bcyrpt -Hashed password security, axios, pg and psql. Deployed Here --> https://violet-backend.onrender.com
 
 ## Features
 

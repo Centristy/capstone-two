@@ -13,20 +13,30 @@
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
+    "browserify-zlib": "^0.2.0",
+    "buffer": "^6.0.3",
+    "crypto-browserify": "^3.12.0",
     "jsonwebtoken": "^8.5.1",
+    "jwt-decode": "^4.0.0",
+    "path-browserify": "^1.0.1",
     "react": "^16.12.0",
+    "react-app-rewired": "^2.2.1",
     "react-dom": "^16.12.0",
     "react-dropdown": "^1.11.0",
     "react-icons-kit": "^2.0.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "^3.4.3"
+    "react-scripts": "^3.4.3",
+    "reactstrap": "^9.2.2",
+    "stream": "^0.0.2",
+    "stream-browserify": "^3.0.0",
+    "stream-http": "^3.2.0",
+    "util": "^0.12.5"
   },
   "scripts": {
     "start": "react-scripts --openssl-legacy-provider start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "surge": "REACT_APP_BASE_URL=http://joelburton-jobly.herokuapp.com npm run build && cp build/index.html build/200.html && surge build joelburton-jobly.surge.sh && echo http://joelburton-jobly.surge.sh"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"

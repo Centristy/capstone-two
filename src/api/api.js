@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = process.env.REACT_APP_BASE_URL || "https://violet-backend.onrender.com";
+const BASE_URL = "https://violet-backend.onrender.com";
 
 /** API Class.
  *

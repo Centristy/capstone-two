@@ -1,28 +1,31 @@
 import React from "react";
 import { render } from "@testing-library/react";
 import { MemoryRouter } from "react-router";
-import Home from "./Homepage";
+import Homepage from "./Homepage";
 import { UserProvider } from "../testUtils";
 
 
-it("matches snapshot", function () {
-  const { asFragment } = render(
+
+it("renders without crashing", function () {
+  render(
       <MemoryRouter>
         <UserProvider>
-          <Home />
+          <Homepage />
         </UserProvider>
       </MemoryRouter>,
   );
-  expect(asFragment()).toMatchSnapshot();
 });
 
-it("matches snapshot when logged out", function () {
-  const { asFragment } = render(
+
+it("displaying welcome properly", function () {
+  const { getByText } = render(
       <MemoryRouter>
-        <UserProvider currentUser={null}>
-          <Home />
+        <UserProvider>
+          <Homepage />
         </UserProvider>
       </MemoryRouter>,
   );
-  expect(asFragment()).toMatchSnapshot();
+
+  console.log(getByText('Welcome!'))
+
 });

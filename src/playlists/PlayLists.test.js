@@ -1,13 +1,13 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import SignupForm from "./SignupForm";
+import PlayLists from "./PlayLists"
 
 it("renders without crashing", function () {
-render(
-        <MemoryRouter>
+  render(
+      <MemoryRouter>
         <UserProvider>
-            <SignupForm />
+          <PlayLists />
         </UserProvider>
-        </MemoryRouter>,
-);
+      </MemoryRouter>,
+  );
 });

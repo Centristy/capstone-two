@@ -2,12 +2,40 @@ import React from "react";
 import { render } from "@testing-library/react";
 import LoginForm from "./LoginForm";
 import { MemoryRouter } from "react-router";
+import { UserProvider } from "../testUtils";
 
-it("matches snapshot", function () {
-  const { asFragment } = render(
+it("renders without crashing", function () {
+  render(
       <MemoryRouter>
-        <LoginForm />
+        <UserProvider>
+          <LoginForm />
+        </UserProvider>
       </MemoryRouter>,
   );
-  expect(asFragment()).toMatchSnapshot();
+});
+
+it("displays properly", function () {
+  const {getByText} = render(
+      <MemoryRouter>
+        <UserProvider>
+          <LoginForm />
+        </UserProvider>
+      </MemoryRouter>,
+  );
+
+  console.log(getByText('Username'))
+
+});
+
+it("doesn't accept empty username or password submissions", function () {
+  const {getBy} = render(
+      <MemoryRouter>
+        <UserProvider>
+          <LoginForm />
+        </UserProvider>
+      </MemoryRouter>,
+  );
+
+  getBy
+  
 });

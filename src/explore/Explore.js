@@ -10,18 +10,17 @@ import UserContext from "../auth/UserContext";
 import ExploreLogo from "../static/explore-logo.png"
 import VioletApi from "../api/api";
 import SongCardList from "../songs/SongCardList";
-import GenerateButton from "../common/GenerateButton";
+
 
 
 
 function Explore() {
 
 const {currentUser} = useContext(UserContext)
+const [searchSongs, setSearchSongs] = useState(null)
 
-const [searchSongs, setSearchSongs] = useState(null);
 
 const [id, setId] = useState(0)
-
 
 
 
@@ -31,21 +30,20 @@ async function search(q) {
 
 let search = await VioletApi.getSongs(q);
 console.log(search)
-setSearchSongs(search);
 }
 
-// For future q will be generated via soundlink api 
-
-let q = ["billie eilish", "eminem", "benson boone", "mariah carrey", "beyonce"]
-
-let rand = Math.floor(Math.random() * 5)
 
 
-async function search(query) {
+async function search(evt) {
 
-    let search = await VioletApi.getSongs(query);
-    console.log(search)
-    setSearchSongs(search);
+    evt.preventDefault();
+    
+    let q = ["billie eilish", "eminem", "benson boone", "mariah carrey", "beyonce", "across universe", "edm", "rock music", "hard style"]
+    let rand = Math.floor(Math.random() * 8)
+
+    let query = q[rand]
+    let searchSongs = await VioletApi.getSongs(query);
+    setSearchSongs(searchSongs)
     }
 
 
@@ -65,6 +63,7 @@ for (let i = 0; i < currentUser.playlists.length; i++){
 
 
     function handleSelection(){
+
         setTimeout(function(){
 
             let currValue = document.getElementsByClassName("is-selected")[0].innerText
@@ -85,13 +84,7 @@ for (let i = 0; i < currentUser.playlists.length; i++){
 
             }
 
-            
-
         }, 500)
-
-    
-
-    rand = Math.floor(Math.random() * 5)
 
 
     }
@@ -104,7 +97,8 @@ return(
 
         <p className="information"> Welcome to Violet Explore. Here, we try to guess what songs you like based on your preferences. Give it a try, and listen to something new. Selecting one of your playlists allows for you to easily add our song choices! Every song you love improves our algorithm </p>
         <Dropdown  id = "drop-down" className="drop-down" options={options}  onChange={handleSelection} placeholder="Select an option" />
-        <GenerateButton className="generate" searchFor={search}  query={q[rand]}/>
+        <form><button className="generate btn btn-lg btn-primary" onClick={search}> Generate </button></form>
+        
         </div>
 
         {searchSongs 
@@ -115,7 +109,7 @@ return(
     
                 </div>
             ) : (
-                <></>
+                <p>....</p>
             )}
 
         <img className="explore-logo" src={ExploreLogo}></img>

@@ -35,6 +35,7 @@ There is a information icon next to each song so that the user can know the arti
 If you can't find the song using the search bar, or would prefer a more customized play list. You can add songs in a more detailed way. This would be good for artists that are making their own music and would like to keep a list of work in progresses. 
 
 
+
 ##Developer Offline Deployment
 
 ### Backend
@@ -66,7 +67,7 @@ If you can't find the song using the search bar, or would prefer a more customiz
 
 5) Write tests for violet-backend.
 
-6) Add genre based suggestions in the explorer page
+6) Add genre based suggestions in the explorer page -- > Find or build another api to generate suggestions.
 
 
 ### Dedication

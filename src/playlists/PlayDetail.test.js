@@ -1,14 +1,15 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import Playlist from "./PlaylistDetail";
+
 import { MemoryRouter, Route } from "react-router-dom";
 import { UserProvider } from "../testUtils";
+import PlayDetail from "./PlayDetail";
 
 it("renders without crashing", function () {
   render(
       <MemoryRouter>
         <UserProvider>
-          <Playlist />
+          <PlayDetail />
         </UserProvider>
       </MemoryRouter>,
   );

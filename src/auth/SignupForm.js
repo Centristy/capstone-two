@@ -119,8 +119,8 @@ function SignupForm({ signup }) {
                   />
                 </div>
 
-                <span class="flex justify-around items-center" onClick={handleToggle}>
-                <Icon class="absolute mr-10" icon={icon} size={25} alt="show password"/></span>
+                <span className="flex justify-around items-center" onClick={handleToggle}>
+                <Icon className="absolute mr-10" icon={icon} size={25} alt="show password"/></span>
 
                 {formErrors.length
                     ? <Alert type="danger" messages={formErrors} />

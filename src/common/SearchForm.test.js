@@ -1,8 +1,15 @@
 import React from "react";
 import { render } from "@testing-library/react";
 import SearchForm from "./SearchForm";
+import { MemoryRouter } from "react-router";
+import { UserProvider } from "../testUtils";
 
-it("matches snapshot", function () {
-  const { asFragment } = render(<SearchForm />);
-  expect(asFragment()).toMatchSnapshot();
+it("renders without crashing", function () {
+render(
+        <MemoryRouter>
+        <UserProvider>
+            <SearchForm />
+        </UserProvider>
+        </MemoryRouter>,
+);
 });

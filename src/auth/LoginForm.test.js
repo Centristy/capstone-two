@@ -1,5 +1,5 @@
 import React from "react";
-import { render } from "@testing-library/react";
+import { getAllByRole, render } from "@testing-library/react";
 import LoginForm from "./LoginForm";
 import { MemoryRouter } from "react-router";
 import { UserProvider } from "../testUtils";
@@ -27,15 +27,3 @@ it("displays properly", function () {
 
 });
 
-it("doesn't accept empty username or password submissions", function () {
-  const {getBy} = render(
-      <MemoryRouter>
-        <UserProvider>
-          <LoginForm />
-        </UserProvider>
-      </MemoryRouter>,
-  );
-
-  getBy
-  
-});

@@ -21,7 +21,6 @@ function PlayLists() {
   const { currentUser } = useContext(UserContext);
   const [playlists, setPlaylists] = useState(currentUser.playlists);
   
-  console.log(currentUser.playlists[0])
 
   let i = 0
 
@@ -32,7 +31,7 @@ function PlayLists() {
   return (
       <div className="PlayList col-8 offset-md-2">
 
-        {playlists.length
+        {playlists
             ? (
                 <div className="PlayList-list">
                   {playlists.map(c => (

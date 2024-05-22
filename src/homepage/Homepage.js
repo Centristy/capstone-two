@@ -21,8 +21,6 @@ function Homepage() {
   const { currentUser } = useContext(UserContext);
   
   
-  console.debug("Homepage", "currentUser=", currentUser);
-
   return (
       <div className="Homepage">
         <div className="container text-center">

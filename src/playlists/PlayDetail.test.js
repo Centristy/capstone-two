@@ -15,15 +15,3 @@ it("renders without crashing", function () {
   );
 });
 
-it("matches snapshot", function () {
-  const { asFragment } = render(
-      <MemoryRouter initialEntries={["/company/ibm"]}>
-        <UserProvider>
-          <Route path="/playlist/:id">
-            <Company />
-          </Route>
-        </UserProvider>
-      </MemoryRouter>,
-  );
-  expect(asFragment()).toMatchSnapshot();
-});

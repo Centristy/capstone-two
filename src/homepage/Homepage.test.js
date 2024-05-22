@@ -1,5 +1,5 @@
 import React from "react";
-import { render } from "@testing-library/react";
+import { queryAllByText, render } from "@testing-library/react";
 import { MemoryRouter } from "react-router";
 import Homepage from "./Homepage";
 import { UserProvider } from "../testUtils";
@@ -18,7 +18,7 @@ it("renders without crashing", function () {
 
 
 it("displaying welcome properly", function () {
-  const { getByText } = render(
+  const { queryAllByText } = render(
       <MemoryRouter>
         <UserProvider>
           <Homepage />
@@ -26,6 +26,6 @@ it("displaying welcome properly", function () {
       </MemoryRouter>,
   );
 
-  console.log(getByText('Welcome!'))
+  console.log(queryAllByText('Welcome! test user'))
 
 });

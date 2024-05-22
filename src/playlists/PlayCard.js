@@ -10,7 +10,7 @@ import "./PlayCard.css";
  * CompanyList -> CompanyCard
  */
 
-function PlayCard({ id, title, order }) {
+function PlayCard({ id, title }) {
 
 
   return (

@@ -1,31 +1,17 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import CompanyCard from "./CompanyCard";
+import PlayCard from "./PlayCard";
 import { MemoryRouter } from "react-router";
+import { UserProvider } from "../testUtils";
 
-it("matches snapshot with logo", function () {
-  const { asFragment } = render(
+
+
+it("renders without crashing", function () {
+  render(
       <MemoryRouter>
-        <CompanyCard
-            handle="rithm"
-            name="Rithm School"
-            description="Become an exceptional developer in 16 weeks."
-            logo_url="https://pbs.twimg.com/profile_images/770491761412173826/ZUeIa4tw_400x400.jpg"
-        />
+        <UserProvider>
+          <PlayCard title="title" id={12345}/>
+        </UserProvider>
       </MemoryRouter>,
   );
-  expect(asFragment()).toMatchSnapshot();
-});
-
-it("matches snapshot without logo", function () {
-  const { asFragment } = render(
-      <MemoryRouter>
-        <CompanyCard
-            handle="algo"
-            name="Algo School"
-            description="Become a mediocre developer in 160 weeks."
-        />
-      </MemoryRouter>,
-  );
-  expect(asFragment()).toMatchSnapshot();
 });

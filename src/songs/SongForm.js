@@ -1,6 +1,7 @@
 import React, { useState} from "react";
 import Alert from "../common/Alert";
 import VioletApi from "../api/api";
+import LoadingSpinner from "../common/LoadingSpinner";
 
 import { useHistory, useParams } from "react-router-dom";
 
@@ -11,6 +12,8 @@ function SongForm() {
 
     
     const { id } = useParams();
+
+    const [loading, setLoading] = useState(false);
 
     const [formData, setFormData] = useState({
       title: "",
@@ -33,6 +36,8 @@ let history = useHistory()
 
       let convertedUrl = await VioletApi.convertUrl({url})
 
+      
+
       console.log( convertedUrl, "This is the converted url")
 
       return convertedUrl
@@ -40,6 +45,8 @@ let history = useHistory()
     }
 
     async function handleSubmit(evt) {
+
+    setLoading(true)
     evt.preventDefault();
 
     let songData = {
@@ -56,6 +63,7 @@ let history = useHistory()
 
     try {
         let result = await VioletApi.addSong(songData);
+        setLoading(false)
 
         console.log(result, "This is the song added result")
 
@@ -82,7 +90,9 @@ let history = useHistory()
     setFormErrors([]);
   }
 
+  if(!loading){
   return (
+    
       <div className="col-md-8 col-lg-5 offset-md-3 offset-lg-4 ProfileForm">
         <h3>New Song</h3>
         <div className="card">
@@ -131,7 +141,6 @@ let history = useHistory()
                     placeholder="(Required) Youtube Link"
                 />
               </div>
-           
               {formErrors.length
                   ? <Alert type="danger" messages={formErrors} />
                   : null}
@@ -152,6 +161,7 @@ let history = useHistory()
         </div>
       </div>
   );
+} else return (<LoadingSpinner></LoadingSpinner>)
 }
 
 export default SongForm;

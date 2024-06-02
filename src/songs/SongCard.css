@@ -12,6 +12,12 @@
   color: rgb(100,20,100);
   font-size: 20px;
 }
+
+.pause-circle {
+  background-color: black;
+  color: rgb(100,20,100);
+  font-size: 20px;
+}
 .play-circle:hover{
   background-color: black;
   color: rgb(200,40,200);

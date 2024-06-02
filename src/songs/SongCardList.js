@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import SongCard from "./SongCard";
 
 /** Show list of Song cards.
@@ -28,6 +28,7 @@ function SongCardList({ songs, added, playlist_id, limit = songs.length }) {
                 album={song.album.title || song.album || 417}
                 added = {added}
                 playlist_id = {playlist_id}
+
             />
           )
         )}

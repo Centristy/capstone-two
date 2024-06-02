@@ -1,32 +1,34 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./SongCard.css";
-import { faCircleInfo, faSquareMinus, faSquarePlus} from "@fortawesome/free-solid-svg-icons";
+import { faCircleInfo, faSquareMinus, faSquarePlus, faCirclePlay, faCirclePause} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import VioletApi from "../api/api";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+
+import ReactAudioPlayer from 'react-audio-player'
+
+
 
 
 /** Show information about playlist - songs and has playablilty.
  * Song card can add song / remove song from a playlist
  */
 
-function SongCard({ id, title, artist, album, url, added, playlist_id }) {
+function SongCard({ id, title, artist, album, url, added, playlist_id}) {
 
- 
- let history = useHistory()
-  const [playing, setPlaying] = useState(false)
-
-  // Time format for duration 134 --> 1:34
-
+  let history = useHistory()
+  const [info, setInfo] = useState(false)
+  const [play, setPlay] = useState(true)
 
   function toggle(){
 
-    if (playing){
-      setPlaying(false)
+    if (info){
+      setInfo(false)
     }
-    else (setPlaying(true))
+    else (setInfo(true))
 
   }
+
 
   async function addNewSong(){
     let data = {
@@ -60,14 +62,39 @@ function SongCard({ id, title, artist, album, url, added, playlist_id }) {
   }
 
 
+  // pass the event to the handler
+  const handlePlay = e =>{
+
+      // get all audio elements and stop them all
+      const allAudios = document.querySelectorAll('audio');
+      const allPauses = document.querySelectorAll('.pause-circle');
+
+      allPauses.forEach(pause => pause.click())
+
+      allAudios.forEach(audioEl => {
+          audioEl.pause()
+          audioEl.currentTime=0;
+      })
+
+      // get the clicked audio element and play
+      const thisAudio = e.target.closest('div').querySelector('audio');
+  
+      thisAudio.play()
+      setPlay(false)
+  }
+
+  const handlePause = e => {
+    const thisAudio = e.target.closest('div').querySelector('audio');
+    thisAudio.pause()
+    setPlay(true)
+  }
 
   return (
       <div className="SongCard card">
         <div className="card-body">
-          <h6 className="card-title">{title} <button className="play-circle" onClick={toggle}><FontAwesomeIcon icon={faCircleInfo}/></button> {added ? <button onClick={removeSong}><FontAwesomeIcon className="delete-icon" icon={faSquareMinus}/></button> : <button onClick={addNewSong}><FontAwesomeIcon className="add-icon" icon={faSquarePlus}/></button>}</h6>
-
-          <audio controls id="player" name="media"><source src={url} type="audio/mpeg"/></audio>
-          {playing ?
+          <h6 className="card-title">{title} {play ? <button className="play-circle" onClick={handlePlay}><FontAwesomeIcon icon={faCirclePlay}/></button> : <button className="pause-circle" onClick={handlePause}><FontAwesomeIcon icon={faCirclePause}/></button>} <button className="play-circle" onClick={toggle}><FontAwesomeIcon icon={faCircleInfo}/></button> {added ? <button onClick={removeSong}><FontAwesomeIcon className="delete-icon" icon={faSquareMinus}/></button> : <button onClick={addNewSong}><FontAwesomeIcon className="add-icon" icon={faSquarePlus}/></button>}</h6>
+          <ReactAudioPlayer id={url} src={url} name="media"/>
+          {info ?
             <p><small>Artist: {artist} &nbsp; &nbsp; Album: {album || null}</small></p>: null
           }
 

@@ -26,7 +26,7 @@ return (
                 </Link>
             </li>
             <li className="nav-item mr-4">
-            <Link className="nav-link linked-in" to= {{ pathname:"https://www.linkedin.com/in/vicky-lee-43341289/" }} target="_blank" rel="noopener noreferrer">
+            <Link className="nav-link linked-in" to= {{ pathname:"https://www.linkedin.com/in/vickytanglee/" }} target="_blank" rel="noopener noreferrer">
                 <FontAwesomeIcon icon={faLinkedin} />
                 </Link>
             </li>
